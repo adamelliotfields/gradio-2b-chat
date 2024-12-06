@@ -18,9 +18,6 @@ preload_from_hub:
     01-ai/Yi-Coder-1.5B-Chat
     config.json,generation_config.json,model.safetensors,special_tokens_map.json,tokenizer.model,tokenizer_config.json
   - >-
-    hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4
-    config.json,generation_config.json,model-00001-of-00002.safetensors,model-00002-of-00002.safetensors,model.safetensors.index.json,special_tokens_map.json,tokenizer.json,tokenizer_config.json
-  - >-
     HuggingFaceTB/SmolLM2-135M-Instruct
     config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
   - >-

@@ -2,9 +2,6 @@ import os
 
 import torch
 from transformers import (
-    AutoConfig,
-    Gemma2ForCausalLM,
-    GemmaTokenizer,
     GlmForCausalLM,
     GPT2Tokenizer,
     LlamaForCausalLM,
@@ -37,7 +34,6 @@ class Loader:
             model_fns = {
                 # Could have used auto-classes or a pipeline
                 "01-ai/Yi-Coder-1.5B-Chat": LlamaForCausalLM.from_pretrained,
-                "hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4": LlamaForCausalLM.from_pretrained,
                 "HuggingFaceTB/SmolLM2-135M-Instruct": LlamaForCausalLM.from_pretrained,
                 "HuggingFaceTB/SmolLM2-360M-Instruct": LlamaForCausalLM.from_pretrained,
                 "HuggingFaceTB/SmolLM2-1.7B-Instruct": LlamaForCausalLM.from_pretrained,
@@ -47,7 +43,6 @@ class Loader:
             }
             model_tokenizers = {
                 "01-ai/Yi-Coder-1.5B-Chat": LlamaTokenizer,
-                "hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4": PreTrainedTokenizerFast,
                 "HuggingFaceTB/SmolLM2-135M-Instruct": GPT2Tokenizer,
                 "HuggingFaceTB/SmolLM2-360M-Instruct": GPT2Tokenizer,
                 "HuggingFaceTB/SmolLM2-1.7B-Instruct": GPT2Tokenizer,
@@ -58,16 +53,7 @@ class Loader:
 
             llm_fn = model_fns[model]
             self.tokenizer = model_tokenizers[model].from_pretrained(model)
-
-            if model == "hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4":
-                # Remove unused settings
-                config = AutoConfig.from_pretrained(model)
-                for key in ["_load_in_4bit", "_load_in_8bit", "quant_method"]:
-                    del config.quantization_config[key]
-                self.llm = llm_fn(model, config=config, **kwargs)
-            else:
-                self.llm = llm_fn(model, **kwargs)
-
+            self.llm = llm_fn(model, **kwargs)
             self.llm.eval()
             self.model = model
 

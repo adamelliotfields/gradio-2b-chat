@@ -1,5 +1,4 @@
 accelerate
-bitsandbytes
 gradio==4.44.1
 hf-transfer
 numpy==1.26.4
