@@ -1,14 +1,85 @@
 ---
-title: Text
-emoji: 🌍
-colorFrom: yellow
-colorTo: red
-sdk: gradio
-sdk_version: 5.8.0
-app_file: app.py
-pinned: false
-license: apache-2.0
+# https://huggingface.co/docs/hub/en/spaces-config-reference
+title: Text Generation
 short_description: Simple app for small language model inference
+emoji: ⌨️
+colorFrom: blue
+colorTo: yellow
+sdk: gradio
+sdk_version: 4.44.1
+python_version: 3.11.9
+app_file: app.py
+fullWidth: false
+pinned: false
+header: default
+license: apache-2.0
+preload_from_hub:
+  - >-
+    01-ai/Yi-Coder-1.5B-Chat
+    config.json,generation_config.json,model.safetensors,special_tokens_map.json,tokenizer.model,tokenizer_config.json
+  - >-
+    google/gemma-2-2b-it
+    config.json,generation_config.json,model-00001-of-00002.safetensors,model-00002-of-00002.safetensors,model.safetensors.index.json,special_tokens_map.json,tokenizer.json,tokenizer.model,tokenizer_config.json
+  - >-
+    hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4
+    config.json,generation_config.json,model-00001-of-00002.safetensors,model-00002-of-00002.safetensors,model.safetensors.index.json,special_tokens_map.json,tokenizer.json,tokenizer_config.json
+  - >-
+    HuggingFaceTB/SmolLM2-135M-Instruct
+    config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
+  - >-
+    HuggingFaceTB/SmolLM2-360M-Instruct
+    config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
+  - >-
+    HuggingFaceTB/SmolLM2-1.7B-Instruct
+    config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
+  - >-
+    meta-llama/Llama-3.2-1B-Instruct
+    config.json,generation_config.json,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json
+  - >-
+    Qwen/Qwen2.5-0.5B-Instruct
+    config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
+  - >-
+    Qwen/Qwen2.5-Coder-1.5B-Instruct
+    config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
+  - >-
+    THUDM/glm-edge-1.5b-chat
+    config.json,generation_config.json,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+# text
+
+Simple app for small language model inference.
+
+## Installation
+
+```bash
+# clone
+git clone https://huggingface.co/spaces/adamelliotfields/text.git
+cd text
+git remote set-url origin https://adamelliotfields:$HF_TOKEN@huggingface.co/spaces/adamelliotfields/text
+
+# install
+uv venv
+uv pip install -r requirements.txt
+
+# gradio
+source .venv/bin/activate
+gradio app.py
+```
+
+## Development
+
+See [pull requests and discussions](https://huggingface.co/docs/hub/en/repositories-pull-requests-discussions).
+
+```sh
+git fetch origin refs/pr/42:pr/42
+git checkout pr/42
+# ...
+git add .
+git commit -m "Commit message"
+git push origin pr/42:refs/pr/42
+```
+
+## Gated Models
+
+If you get an `OSError` about a model not existing, run `huggingface-cli login` to create a `~/.cache/huggingface/token` (after accepting the terms for the model on the website).
