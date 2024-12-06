@@ -18,9 +18,6 @@ preload_from_hub:
     01-ai/Yi-Coder-1.5B-Chat
     config.json,generation_config.json,model.safetensors,special_tokens_map.json,tokenizer.model,tokenizer_config.json
   - >-
-    google/gemma-2-2b-it
-    config.json,generation_config.json,model-00001-of-00002.safetensors,model-00002-of-00002.safetensors,model.safetensors.index.json,special_tokens_map.json,tokenizer.json,tokenizer.model,tokenizer_config.json
-  - >-
     hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4
     config.json,generation_config.json,model-00001-of-00002.safetensors,model-00002-of-00002.safetensors,model.safetensors.index.json,special_tokens_map.json,tokenizer.json,tokenizer_config.json
   - >-
@@ -32,9 +29,6 @@ preload_from_hub:
   - >-
     HuggingFaceTB/SmolLM2-1.7B-Instruct
     config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
-  - >-
-    meta-llama/Llama-3.2-1B-Instruct
-    config.json,generation_config.json,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json
   - >-
     Qwen/Qwen2.5-0.5B-Instruct
     config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
@@ -79,7 +73,3 @@ git add .
 git commit -m "Commit message"
 git push origin pr/42:refs/pr/42
 ```
-
-## Gated Models
-
-If you get an `OSError` about a model not existing, run `huggingface-cli login` to create a `~/.cache/huggingface/token` (after accepting the terms for the model on the website).

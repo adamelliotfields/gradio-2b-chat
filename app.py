@@ -46,12 +46,10 @@ chat_interface = gr.ChatInterface(
             value="HuggingFaceTB/SmolLM2-135M-Instruct",
             choices=[
                 "01-ai/Yi-Coder-1.5B-Chat",
-                "google/gemma-2-2b-it",
                 "hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4",
                 "HuggingFaceTB/SmolLM2-135M-Instruct",
                 "HuggingFaceTB/SmolLM2-360M-Instruct",
                 "HuggingFaceTB/SmolLM2-1.7B-Instruct",
-                "meta-llama/Llama-3.2-1B-Instruct",
                 "Qwen/Qwen2.5-0.5B-Instruct",
                 "Qwen/Qwen2.5-Coder-1.5B-Instruct",
                 "THUDM/glm-edge-1.5b-chat",

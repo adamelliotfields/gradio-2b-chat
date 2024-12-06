@@ -37,24 +37,20 @@ class Loader:
             model_fns = {
                 # Could have used auto-classes or a pipeline
                 "01-ai/Yi-Coder-1.5B-Chat": LlamaForCausalLM.from_pretrained,
-                "google/gemma-2-2b-it": Gemma2ForCausalLM.from_pretrained,
                 "hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4": LlamaForCausalLM.from_pretrained,
                 "HuggingFaceTB/SmolLM2-135M-Instruct": LlamaForCausalLM.from_pretrained,
                 "HuggingFaceTB/SmolLM2-360M-Instruct": LlamaForCausalLM.from_pretrained,
                 "HuggingFaceTB/SmolLM2-1.7B-Instruct": LlamaForCausalLM.from_pretrained,
-                "meta-llama/Llama-3.2-1B-Instruct": LlamaForCausalLM.from_pretrained,
                 "Qwen/Qwen2.5-0.5B-Instruct": Qwen2ForCausalLM.from_pretrained,
                 "Qwen/Qwen2.5-Coder-1.5B-Instruct": Qwen2ForCausalLM.from_pretrained,
                 "THUDM/glm-edge-1.5b-chat": GlmForCausalLM.from_pretrained,
             }
             model_tokenizers = {
                 "01-ai/Yi-Coder-1.5B-Chat": LlamaTokenizer,
-                "google/gemma-2-2b-it": GemmaTokenizer,
                 "hugging-quants/Meta-Llama-3.1-8B-Instruct-BNB-NF4": PreTrainedTokenizerFast,
                 "HuggingFaceTB/SmolLM2-135M-Instruct": GPT2Tokenizer,
                 "HuggingFaceTB/SmolLM2-360M-Instruct": GPT2Tokenizer,
                 "HuggingFaceTB/SmolLM2-1.7B-Instruct": GPT2Tokenizer,
-                "meta-llama/Llama-3.2-1B-Instruct": PreTrainedTokenizerFast,
                 "Qwen/Qwen2.5-0.5B-Instruct": Qwen2Tokenizer,
                 "Qwen/Qwen2.5-Coder-1.5B-Instruct": Qwen2Tokenizer,
                 "THUDM/glm-edge-1.5b-chat": PreTrainedTokenizerFast,
