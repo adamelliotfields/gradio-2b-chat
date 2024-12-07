@@ -1,6 +1,6 @@
 ---
 # https://huggingface.co/docs/hub/en/spaces-config-reference
-title: Text
+title: Chat
 short_description: Serverless small language model inference
 emoji: 🤖
 colorFrom: blue
@@ -46,7 +46,7 @@ preload_from_hub:
     config.json,generation_config.json,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json
 ---
 
-# text
+# chat
 
 Serverless small language model inference.
 
@@ -69,8 +69,8 @@ Ungated models under 2B parameters:
 
 ```bash
 # clone
-git clone https://huggingface.co/spaces/adamelliotfields/text.git
-cd text
+git clone https://huggingface.co/spaces/adamelliotfields/chat.git
+cd chat
 
 # install
 uv venv
@@ -88,7 +88,7 @@ gradio app.py
 Use existing `HF_TOKEN`:
 
 ```sh
-git remote set-url origin https://adamelliotfields:$HF_TOKEN@huggingface.co/spaces/adamelliotfields/text
+git remote set-url origin https://adamelliotfields:$HF_TOKEN@huggingface.co/spaces/adamelliotfields/chat
 ```
 
 ### PRs
