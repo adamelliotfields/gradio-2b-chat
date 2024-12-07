@@ -1,15 +1,8 @@
 import os
 
 import torch
-from transformers import (
-    GlmForCausalLM,
-    GPT2Tokenizer,
-    LlamaForCausalLM,
-    LlamaTokenizer,
-    PreTrainedTokenizerFast,
-    Qwen2ForCausalLM,
-    Qwen2Tokenizer,
-)
+
+from .config import CONFIG
 
 
 class Loader:
@@ -31,29 +24,10 @@ class Loader:
                 "low_cpu_mem_usage": True,
                 "torch_dtype": torch.bfloat16 if cuda_capability >= 8 else torch.float16,
             }
-            model_fns = {
-                # Could have used auto-classes or a pipeline
-                "01-ai/Yi-Coder-1.5B-Chat": LlamaForCausalLM.from_pretrained,
-                "HuggingFaceTB/SmolLM2-135M-Instruct": LlamaForCausalLM.from_pretrained,
-                "HuggingFaceTB/SmolLM2-360M-Instruct": LlamaForCausalLM.from_pretrained,
-                "HuggingFaceTB/SmolLM2-1.7B-Instruct": LlamaForCausalLM.from_pretrained,
-                "Qwen/Qwen2.5-0.5B-Instruct": Qwen2ForCausalLM.from_pretrained,
-                "Qwen/Qwen2.5-Coder-1.5B-Instruct": Qwen2ForCausalLM.from_pretrained,
-                "THUDM/glm-edge-1.5b-chat": GlmForCausalLM.from_pretrained,
-            }
-            model_tokenizers = {
-                "01-ai/Yi-Coder-1.5B-Chat": LlamaTokenizer,
-                "HuggingFaceTB/SmolLM2-135M-Instruct": GPT2Tokenizer,
-                "HuggingFaceTB/SmolLM2-360M-Instruct": GPT2Tokenizer,
-                "HuggingFaceTB/SmolLM2-1.7B-Instruct": GPT2Tokenizer,
-                "Qwen/Qwen2.5-0.5B-Instruct": Qwen2Tokenizer,
-                "Qwen/Qwen2.5-Coder-1.5B-Instruct": Qwen2Tokenizer,
-                "THUDM/glm-edge-1.5b-chat": PreTrainedTokenizerFast,
-            }
 
-            llm_fn = model_fns[model]
-            self.tokenizer = model_tokenizers[model].from_pretrained(model)
-            self.llm = llm_fn(model, **kwargs)
+            config = CONFIG[model]
+            self.tokenizer = config["tokenizer"].from_pretrained(model)
+            self.llm = config["model"].from_pretrained(model, **kwargs)
             self.llm.eval()
             self.model = model
 

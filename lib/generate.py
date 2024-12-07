@@ -1,8 +1,6 @@
 from threading import Thread
 from typing import Iterator
 
-import torch
-from gradio import Error, Progress
 from spaces import GPU, config
 from transformers import TextIteratorStreamer
 
@@ -13,23 +11,19 @@ from .loader import get_loader
 def generate(
     message: str,
     chat_history: list[dict[str, str]],
-    system_prompt="",
-    model="HuggingFaceTB/SmolLM2-135M-Instruct",
+    system_message="",
+    model="Qwen/Qwen2.5-0.5B-Instruct",
     max_tokens=512,
     temperature=0.6,
     repetition_penalty=1.2,
     top_p=0.9,
     top_k=50,
-    _=Progress(track_tqdm=True),
 ) -> Iterator[str]:
-    if not torch.cuda.is_available():
-        raise Error("CUDA not available")
-
     # Prepend system prompt
     if not chat_history or chat_history[0].get("role") != "system":
-        chat_history.insert(0, {"role": "system", "content": system_prompt})
+        chat_history.insert(0, {"role": "system", "content": system_message})
     else:
-        chat_history[0]["content"] = system_prompt
+        chat_history[0]["content"] = system_message
 
     # Append user message before generating
     chat_history.append({"role": "user", "content": message})
@@ -83,6 +77,7 @@ def transformers_generate(
         skip_special_tokens=True,
     )
 
+    # https://huggingface.co/blog/how-to-generate
     generate_kwargs = dict(
         do_sample=True,
         streamer=streamer,

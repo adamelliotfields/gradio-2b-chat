@@ -1,0 +1,28 @@
+#header {
+  margin-bottom: 8px !important;
+}
+#header > div {
+  display: flex;
+}
+#header > div > h1 > span {
+  font-style: italic;
+  color: #047857 !important;
+}
+#header > div > h1 > span:is(.dark *) {
+  color: #10b981 !important;
+}
+#header > div > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+  align-self: center;
+  fill: #047857 !important;
+  animation: spin 3s linear infinite reverse;
+}
+#header > div > svg:is(.dark *) {
+  fill: #10b981 !important;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
