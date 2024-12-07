@@ -28,7 +28,7 @@ preload_from_hub:
     config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
   - >-
     ibm-granite/granite-3.0-2b-instruct
-    added_tokens.json,config.json,merges.txt,model-00001.safetensors,model-00002.safetensors,model.safetensors.index.json,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
+    added_tokens.json,config.json,merges.txt,model-00001-of-00002.safetensors,model-00002-of-00002.safetensors,model.safetensors.index.json,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
   - >-
     Qwen/Qwen2.5-0.5B-Instruct
     config.json,generation_config.json,merges.txt,model.safetensors,special_tokens_map.json,tokenizer.json,tokenizer_config.json,vocab.json
