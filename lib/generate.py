@@ -1,13 +1,11 @@
 from threading import Thread
 from typing import Iterator
 
-from spaces import GPU, config
 from transformers import TextIteratorStreamer
 
 from .loader import get_loader
 
 
-@GPU
 def generate(
     message: str,
     chat_history: list[dict[str, str]],
@@ -48,7 +46,7 @@ def transformers_generate(
     top_p: float,
     top_k: int,
 ) -> Iterator[str]:
-    loader = get_loader(singleton=not config.Config.zero_gpu)
+    loader = get_loader()
     loader.load(model)
 
     llm = loader.llm

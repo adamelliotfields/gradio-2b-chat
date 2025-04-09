@@ -38,11 +38,8 @@ class Loader:
             torch.cuda.synchronize()
 
 
-# Get a singleton or new instance
-def get_loader(singleton=False):
-    if not singleton:
-        return Loader()
-    else:
-        if not hasattr(get_loader, "_instance"):
-            get_loader._instance = Loader()
-        return get_loader._instance
+# Get a singleton
+def get_loader():
+    if not hasattr(get_loader, "_instance"):
+        get_loader._instance = Loader()
+    return get_loader._instance
